@@ -3,119 +3,248 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MS Exclusive Fashion - Premium Saree Collection</title>
+    <title>MS Exclusive Fashion | Premium Saree Shop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --primary: #880808; --gold: #D4AF37; --light: #fff5f5; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #fcfcfc; margin: 0; color: #333; }
-        header { background: var(--primary); color: white; text-align: center; padding: 20px 10px; border-bottom: 4px solid var(--gold); }
-        .container { max-width: 600px; margin: auto; padding: 15px; }
-        
-        /* Product Styles */
-        .main-img-container { width: 100%; background: white; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); overflow: hidden; margin-bottom: 15px; }
-        #main-img { width: 100%; height: auto; display: block; transition: 0.3s; }
-        
-        .thumb-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 20px; }
-        .thumb { width: 100%; aspect-ratio: 1; border-radius: 5px; cursor: pointer; border: 2px solid transparent; object-fit: cover; }
-        .thumb.active { border-color: var(--primary); }
-
-        .details { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        h2 { color: var(--primary); margin-top: 0; }
-        .price { font-size: 24px; color: #28a745; font-weight: bold; margin: 10px 0; }
-
-        /* Form Styles */
-        .order-form { margin-top: 25px; background: var(--light); padding: 20px; border-radius: 12px; border: 1px solid #ffebeb; }
-        label { display: block; margin-bottom: 5px; font-weight: bold; }
-        input, textarea { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 16px; }
-        .btn-order { background: #25D366; color: white; border: none; width: 100%; padding: 15px; font-size: 18px; font-weight: bold; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; }
-        .btn-order:hover { background: #128C7E; }
+        @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;600;700&display=swap');
+        body { font-family: 'Hind Siliguri', sans-serif; background-color: #fcf8f8; }
+        .product-card { transition: all 0.3s ease; border: 1px solid #f3e8e8; }
+        .product-card:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(136, 8, 8, 0.08); }
+        .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(3px); }
     </style>
 </head>
-<body>
+<body class="pb-16">
 
-<header>
-    <h1 style="margin:0; font-size: 22px;">MS Exclusive Fashion</h1>
-    <p style="margin:5px 0 0; opacity: 0.9;">আপনার আভিজাত্যে আমাদের ছোঁয়া</p>
-</header>
-
-<div class="container">
-    <div class="main-img-container">
-        <img id="main-img" src="https://i.ibb.co/1fgJW1CD" alt="Main Saree">
+<nav class="bg-white shadow-sm sticky top-0 z-50 border-b-2 border-amber-500">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <span class="text-2xl font-bold text-red-800 tracking-wide">MS Exclusive Fashion</span>
+        </div>
+        <div class="flex items-center gap-4 text-gray-700">
+            <a href="https://chat.whatsapp.com/KrMYH2MDP7S3i4z2i1lSae" target="_blank" class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+                <i class="fab fa-whatsapp text-sm"></i> গ্রুপে যোগ দিন
+            </a>
+        </div>
     </div>
+</nav>
 
-    <div class="thumb-grid">
-        <img class="thumb active" src="https://i.ibb.co/1fgJW1CD" onclick="updateGallery(this)">
-        <img class="thumb" src="https://i.ibb.co/Gfvz1dx5" onclick="updateGallery(this)">
-        <img class="thumb" src="https://i.ibb.co/dwdGTZLb" onclick="updateGallery(this)">
-        <img class="thumb" src="https://i.ibb.co/TM7Q3jrn" onclick="updateGallery(this)">
-        <img class="thumb" src="https://i.ibb.co/bRP9qJhf" onclick="updateGallery(this)">
-        <img class="thumb" src="https://i.ibb.co/V0vJv3jd" onclick="updateGallery(this)">
-        <img class="thumb" src="https://i.ibb.co/Kz5YY1GD" onclick="updateGallery(this)">
-        <img class="thumb" src="https://i.ibb.co/4ZfthyvL" onclick="updateGallery(this)">
-        <img class="thumb" src="https://i.ibb.co/qMvhQ41Z" onclick="updateGallery(this)">
+<div class="bg-gradient-to-r from-red-900 to-red-700 py-10 px-4 text-center text-white relative overflow-hidden shadow-inner">
+    <div class="relative z-10">
+        <h1 class="text-3xl md:text-4xl font-bold text-amber-400">এম এস এক্সক্লুসিভ ফ্যাশন</h1>
+        <p class="text-amber-100 mt-2 text-sm md:text-base tracking-widest">নান্দনিক ডিজাইন ও আভিজাত্যের বিশ্বস্ত প্রতিষ্ঠান</p>
     </div>
+    <div class="absolute -right-10 -bottom-10 text-red-800 opacity-20 text-9xl font-bold">MS</div>
+</div>
 
-    <div class="details">
-        <h2>এক্সক্লুসিভ ডিজাইনার শাড়ি</h2>
-        <p>কালার সিলেক্ট করতে উপরের ছবিতে ক্লিক করুন।</p>
-        <div class="price">৳ ১২৫০ (ফিক্সড)</div>
-    </div>
-
-    <div class="order-form">
-        <h3>অর্ডার কনফার্ম করুন</h3>
-        <label>আপনার নাম:</label>
-        <input type="text" id="name" placeholder="উদা: রহিম আহমেদ" required>
-        
-        <label>ফোন নাম্বার:</label>
-        <input type="tel" id="phone" placeholder="উদা: 01906109839" required>
-        
-        <label>পুরো ঠিকানা:</label>
-        <textarea id="address" rows="3" placeholder="গ্রাম/রাস্তা, থানা, জেলা" required></textarea>
-
-        <button class="btn-order" onclick="sendToWhatsApp()">
-            WhatsApp-এ অর্ডার করুন
-        </button>
+<div class="max-w-6xl mx-auto px-4 pt-6">
+    <div class="flex items-center gap-2 border-b-2 border-red-800 pb-2">
+        <span class="bg-red-800 text-white w-3 h-6 rounded-sm"></span>
+        <h2 class="text-xl font-bold text-gray-800">আমাদের এক্সক্লুসিভ শাড়ি কালেকশন</h2>
     </div>
 </div>
 
+<div class="max-w-6xl mx-auto p-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4" id="shop-grid">
+    <div class="product-card bg-white rounded-xl overflow-hidden shadow-sm">
+        <div class="relative bg-gray-100 aspect-[3/4]">
+            <img src="https://i.ibb.co.com/1fgJW1CD" class="w-full h-full object-cover" alt="Saree 1">
+        </div>
+        <div class="p-3 text-center">
+            <h3 class="font-semibold text-gray-800 text-sm truncate">এক্সক্লুসিভ শাড়ি - ডিজাইন ০১</h3>
+            <div class="flex justify-center items-center gap-2 mt-1">
+                <span class="text-red-700 font-bold text-base">৳ ১২৫০</span>
+                <span class="text-gray-400 line-through text-xs">৳ ১৮৫০</span>
+            </div>
+            <button onclick="openOrder('ডিজাইন ০১', 'https://i.ibb.co.com/1fgJW1CD')" class="mt-2.5 w-full bg-red-800 hover:bg-red-900 text-white py-2 rounded-lg text-sm font-medium flex items-center justify-center gap-1 shadow-sm"><i class="fas fa-shopping-bag text-xs"></i> অর্ডার করুন</button>
+        </div>
+    </div>
+
+    <div class="product-card bg-white rounded-xl overflow-hidden shadow-sm">
+        <div class="relative bg-gray-100 aspect-[3/4]">
+            <img src="https://i.ibb.co.com/Gfvz1dx5" class="w-full h-full object-cover" alt="Saree 2">
+        </div>
+        <div class="p-3 text-center">
+            <h3 class="font-semibold text-gray-800 text-sm truncate">এক্সক্লুসিভ শাড়ি - ডিজাইন ০২</h3>
+            <div class="flex justify-center items-center gap-2 mt-1">
+                <span class="text-red-700 font-bold text-base">৳ ১২৫০</span>
+                <span class="text-gray-400 line-through text-xs">৳ ১৮৫০</span>
+            </div>
+            <button onclick="openOrder('ডিজাইন ০২', 'https://i.ibb.co.com/Gfvz1dx5')" class="mt-2.5 w-full bg-red-800 hover:bg-red-900 text-white py-2 rounded-lg text-sm font-medium flex items-center justify-center gap-1 shadow-sm"><i class="fas fa-shopping-bag text-xs"></i> অর্ডার করুন</button>
+        </div>
+    </div>
+
+    <div class="product-card bg-white rounded-xl overflow-hidden shadow-sm">
+        <div class="relative bg-gray-100 aspect-[3/4]">
+            <img src="https://i.ibb.co.com/dwdGTZLb" class="w-full h-full object-cover" alt="Saree 3">
+        </div>
+        <div class="p-3 text-center">
+            <h3 class="font-semibold text-gray-800 text-sm truncate">এক্সক্লুসিভ শাড়ি - ডিজাইন ০৩</h3>
+            <div class="flex justify-center items-center gap-2 mt-1">
+                <span class="text-red-700 font-bold text-base">৳ ১২৫০</span>
+                <span class="text-gray-400 line-through text-xs">৳ ১৮৫০</span>
+            </div>
+            <button onclick="openOrder('ডিজাইন ০৩', 'https://i.ibb.co.com/dwdGTZLb')" class="mt-2.5 w-full bg-red-800 hover:bg-red-900 text-white py-2 rounded-lg text-sm font-medium flex items-center justify-center gap-1 shadow-sm"><i class="fas fa-shopping-bag text-xs"></i> অর্ডার করুন</button>
+        </div>
+    </div>
+
+    <div class="product-card bg-white rounded-xl overflow-hidden shadow-sm">
+        <div class="relative bg-gray-100 aspect-[3/4]">
+            <img src="https://i.ibb.co.com/TM7Q3jrn" class="w-full h-full object-cover" alt="Saree 4">
+        </div>
+        <div class="p-3 text-center">
+            <h3 class="font-semibold text-gray-800 text-sm truncate">এক্সক্লুসিভ শাড়ি - ডিজাইন ০৪</h3>
+            <div class="flex justify-center items-center gap-2 mt-1">
+                <span class="text-red-700 font-bold text-base">৳ ১২৫০</span>
+                <span class="text-gray-400 line-through text-xs">৳ ১৮৫০</span>
+            </div>
+            <button onclick="openOrder('ডিজাইন ০৪', 'https://i.ibb.co.com/TM7Q3jrn')" class="mt-2.5 w-full bg-red-800 hover:bg-red-900 text-white py-2 rounded-lg text-sm font-medium flex items-center justify-center gap-1 shadow-sm"><i class="fas fa-shopping-bag text-xs"></i> অর্ডার করুন</button>
+        </div>
+    </div>
+
+    <div class="product-card bg-white rounded-xl overflow-hidden shadow-sm">
+        <div class="relative bg-gray-100 aspect-[3/4]">
+            <img src="https://i.ibb.co.com/bRP9qJhf" class="w-full h-full object-cover" alt="Saree 5">
+        </div>
+        <div class="p-3 text-center">
+            <h3 class="font-semibold text-gray-800 text-sm truncate">এক্সক্লুসিভ শাড়ি - ডিজাইন ০৫</h3>
+            <div class="flex justify-center items-center gap-2 mt-1">
+                <span class="text-red-700 font-bold text-base">৳ ১২৫০</span>
+                <span class="text-gray-400 line-through text-xs">৳ ১৮৫০</span>
+            </div>
+            <button onclick="openOrder('ডিজাইন ০৫', 'https://i.ibb.co.com/bRP9qJhf')" class="mt-2.5 w-full bg-red-800 hover:bg-red-900 text-white py-2 rounded-lg text-sm font-medium flex items-center justify-center gap-1 shadow-sm"><i class="fas fa-shopping-bag text-xs"></i> অর্ডার করুন</button>
+        </div>
+    </div>
+
+    <div class="product-card bg-white rounded-xl overflow-hidden shadow-sm">
+        <div class="relative bg-gray-100 aspect-[3/4]">
+            <img src="https://i.ibb.co.com/V0vJv3jd" class="w-full h-full object-cover" alt="Saree 6">
+        </div>
+        <div class="p-3 text-center">
+            <h3 class="font-semibold text-gray-800 text-sm truncate">এক্সক্লুসিভ শাড়ি - ডিজাইন ০৬</h3>
+            <div class="flex justify-center items-center gap-2 mt-1">
+                <span class="text-red-700 font-bold text-base">৳ ১২৫০</span>
+                <span class="text-gray-400 line-through text-xs">৳ ১৮৫০</span>
+            </div>
+            <button onclick="openOrder('ডিজাইন ০৬', 'https://i.ibb.co.com/V0vJv3jd')" class="mt-2.5 w-full bg-red-800 hover:bg-red-900 text-white py-2 rounded-lg text-sm font-medium flex items-center justify-center gap-1 shadow-sm"><i class="fas fa-shopping-bag text-xs"></i> অর্ডার করুন</button>
+        </div>
+    </div>
+
+    <div class="product-card bg-white rounded-xl overflow-hidden shadow-sm">
+        <div class="relative bg-gray-100 aspect-[3/4]">
+            <img src="https://i.ibb.co.com/Kz5YY1GD" class="w-full h-full object-cover" alt="Saree 7">
+        </div>
+        <div class="p-3 text-center">
+            <h3 class="font-semibold text-gray-800 text-sm truncate">এক্সক্লুসিভ শাড়ি - ডিজাইন ০৭</h3>
+            <div class="flex justify-center items-center gap-2 mt-1">
+                <span class="text-red-700 font-bold text-base">৳ ১২৫০</span>
+                <span class="text-gray-400 line-through text-xs">৳ ১৮৫০</span>
+            </div>
+            <button onclick="openOrder('ডিজাইন ০৭', 'https://i.ibb.co.com/Kz5YY1GD')" class="mt-2.5 w-full bg-red-800 hover:bg-red-900 text-white py-2 rounded-lg text-sm font-medium flex items-center justify-center gap-1 shadow-sm"><i class="fas fa-shopping-bag text-xs"></i> অর্ডার করুন</button>
+        </div>
+    </div>
+
+    <div class="product-card bg-white rounded-xl overflow-hidden shadow-sm">
+        <div class="relative bg-gray-100 aspect-[3/4]">
+            <img src="https://i.ibb.co.com/4ZfthyvL" class="w-full h-full object-cover" alt="Saree 8">
+        </div>
+        <div class="p-3 text-center">
+            <h3 class="font-semibold text-gray-800 text-sm truncate">এক্সক্লুসিভ শাড়ি - ডিজাইন ০৮</h3>
+            <div class="flex justify-center items-center gap-2 mt-1">
+                <span class="text-red-700 font-bold text-base">৳ ১২৫০</span>
+                <span class="text-gray-400 line-through text-xs">৳ ১৮৫০</span>
+            </div>
+            <button onclick="openOrder('ডিজাইন ০৮', 'https://i.ibb.co.com/4ZfthyvL')" class="mt-2.5 w-full bg-red-800 hover:bg-red-900 text-white py-2 rounded-lg text-sm font-medium flex items-center justify-center gap-1 shadow-sm"><i class="fas fa-shopping-bag text-xs"></i> অর্ডার করুন</button>
+        </div>
+    </div>
+
+    <div class="product-card bg-white rounded-xl overflow-hidden shadow-sm">
+        <div class="relative bg-gray-100 aspect-[3/4]">
+            <img src="https://i.ibb.co.com/qMvhQ41Z" class="w-full h-full object-cover" alt="Saree 9">
+        </div>
+        <div class="p-3 text-center">
+            <h3 class="font-semibold text-gray-800 text-sm truncate">এক্সক্লুসিভ শাড়ি - ডিজাইন ০৯</h3>
+            <div class="flex justify-center items-center gap-2 mt-1">
+                <span class="text-red-700 font-bold text-base">৳ ১২৫০</span>
+                <span class="text-gray-400 line-through text-xs">৳ ১৮৫০</span>
+            </div>
+            <button onclick="openOrder('ডিজাইন ০৯', 'https://i.ibb.co.com/qMvhQ41Z')" class="mt-2.5 w-full bg-red-800 hover:bg-red-900 text-white py-2 rounded-lg text-sm font-medium flex items-center justify-center gap-1 shadow-sm"><i class="fas fa-shopping-bag text-xs"></i> অর্ডার করুন</button>
+        </div>
+    </div>
+</div>
+
+<div id="orderModal" class="modal flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl w-full max-w-md overflow-hidden shadow-2xl relative animate-slide-up">
+        <span onclick="closeOrder()" class="absolute top-3 right-4 text-3xl text-gray-400 hover:text-gray-600 cursor-pointer z-10">&times;</span>
+        
+        <div class="bg-red-800 p-4 text-white">
+            <h3 class="text-lg font-bold flex items-center gap-2" id="modalTitle">অর্ডার নিশ্চিত করুন</h3>
+            <p class="text-xs text-red-100 mt-1">সঠিক তথ্য দিয়ে ফর্মটি পূরণ করুন, আমরা দ্রুত যোগাযোগ করব।</p>
+        </div>
+
+        <div class="p-5">
+            <div class="flex gap-3 bg-gray-50 p-2 rounded-lg border border-gray-100 mb-4">
+                <img id="modalProductImg" src="" class="w-14 h-14 object-cover rounded-md border">
+                <div>
+                    <h4 id="modalProductName" class="font-bold text-gray-800 text-sm"></h4>
+                    <p class="text-xs text-red-700 font-semibold mt-0.5">মূল্য: ৳ ১২৫০</p>
+                </div>
+            </div>
+
+            <label class="block text-xs font-bold text-gray-600 uppercase mb-1">আপনার নাম <span class="text-red-600">*</span></label>
+            <input type="text" id="custName" placeholder="নাম লিখুন" class="w-full border border-gray-300 p-2.5 mb-3 rounded-lg focus:outline-none focus:border-red-800 text-sm">
+            
+            <label class="block text-xs font-bold text-gray-600 uppercase mb-1">মোবাইল নাম্বার <span class="text-red-600">*</span></label>
+            <input type="tel" id="custPhone" placeholder="01906109839" class="w-full border border-gray-300 p-2.5 mb-3 rounded-lg focus:outline-none focus:border-red-800 text-sm">
+            
+            <label class="block text-xs font-bold text-gray-600 uppercase mb-1">পুরো ঠিকানা <span class="text-red-600">*</span></label>
+            <textarea id="custAddr" rows="3" placeholder="গ্রাম/রাস্তা, থানা, জেলা লিখুন" class="w-full border border-gray-300 p-2.5 mb-4 rounded-lg focus:outline-none focus:border-red-800 text-sm"></textarea>
+            
+            <button onclick="confirmOrder()" class="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 shadow-md transition"><i class="fab fa-whatsapp text-lg"></i> হোয়াটসঅ্যাপে অর্ডার পাঠান</button>
+        </div>
+    </div>
+</div>
+
+<footer class="bg-white border-t border-gray-200 fixed bottom-0 left-0 w-full py-3 px-4 flex justify-between items-center shadow-lg z-40">
+    <div class="text-xs text-gray-500">&copy; ২০২৬ MS Exclusive Fashion</div>
+    <a href="https://chat.whatsapp.com/KrMYH2MDP7S3i4z2i1lSae" target="_blank" class="bg-green-600 text-white px-4 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5">
+        <i class="fab fa-whatsapp"></i> হেল্পলাইন গ্রুপ
+    </a>
+</footer>
+
 <script>
-    let selectedImg = "https://i.ibb.co/1fgJW1CD";
+    let currentProductName = "";
+    let currentProductImg = "";
 
-    function updateGallery(element) {
-        // Update main image
-        const mainImg = document.getElementById('main-img');
-        mainImg.src = element.src;
-        selectedImg = element.src;
-
-        // Update active thumbnail
-        document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
-        element.classList.add('active');
+    function openOrder(pName, pImg) {
+        currentProductName = "এক্সক্লুসিভ শাড়ি - " + pName;
+        currentProductImg = pImg;
+        
+        document.getElementById('modalProductName').innerText = currentProductName;
+        document.getElementById('modalProductImg').src = pImg;
+        document.getElementById('orderModal').style.display = 'flex';
     }
 
-    function sendToWhatsApp() {
-        const name = document.getElementById('name').value;
-        const phone = document.getElementById('phone').value;
-        const address = document.getElementById('address').value;
-        
-        if(!name || !phone || !address) {
-            alert("দয়া করে সঠিক তথ্য দিন");
+    function closeOrder() {
+        document.getElementById('orderModal').style.display = 'none';
+    }
+
+    function confirmOrder() {
+        const name = document.getElementById('custName').value.trim();
+        const phone = document.getElementById('custPhone').value.trim();
+        const addr = document.getElementById('custAddr').value.trim();
+
+        if(!name || !phone || !addr) {
+            alert("দয়া করে সব তথ্য সঠিকভাবে পূরণ করুন।");
             return;
         }
 
-        // আপনার হোয়াটসঅ্যাপ গ্রুপ বা নাম্বার (গ্রুপের জন্য লিঙ্কে পাঠানো ভালো, কিন্তু সরাসরি মেসেজ বেশি কার্যকর)
-        // এখানে আমি হোয়াটসঅ্যাপ মেসেজ ফরম্যাট করছি
-        const whatsappNumber = "YOUR_NUMBER"; // আপনার নিজের নাম্বার দিন অথবা গ্রুপের লিঙ্ক ব্যবহার করুন
-        const message = `*নতুন অর্ডার (MS Exclusive Fashion)*%0A--------------------------%0A*নাম:* ${name}%0A*ফোন:* ${phone}%0A*ঠিকানা:* ${address}%0A*পণ্য:* এক্সক্লুসিভ শাড়ি%0A*ছবি:* ${selectedImg}`;
+        // হোয়াটসঅ্যাপ মেসেজ স্ট্রাকচার (ছবি লিংকসহ সম্পূর্ণ তথ্য যাবে)
+        const message = `*নতুন অর্ডার (MS Exclusive)*%0A=========================%0A*পণ্য:* ${currentProductName}%0A*মূল্য:* ৳ ১২৫০%0A%0A*কাস্টমারের নাম:* ${name}%0A*ফোন নাম্বার:* ${phone}%0A*ঠিকানা:* ${addr}%0A%0A*পণ্যের ছবি দেখতে ক্লিক করুন:* ${currentProductImg}%0A=========================`;
         
-        // এটি আপনার হোয়াটসঅ্যাপ গ্রুপ লিঙ্কে নিয়ে যাবে
-        const groupLink = "https://chat.whatsapp.com/KrMYH2MDP7S3i4z2i1lSae";
-        
-        // সরাসরি হোয়াটসঅ্যাপ চ্যাটে পাঠাতে:
+        // এটি কাস্টমারকে সরাসরি হোয়াটসঅ্যাপ অ্যাপে নিয়ে যাবে মেসেজসহ
         window.open(`https://api.whatsapp.com/send?text=${message}`, '_blank');
-        
-        // অথবা গ্রুপ লিঙ্কে ভিজিট করাতে চাইলে:
-        // window.location.href = groupLink;
+        closeOrder();
     }
 </script>
-
 </body>
 </html>
